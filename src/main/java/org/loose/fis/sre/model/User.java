@@ -6,11 +6,15 @@ public class User {
     @Id
     private String username;
     private String password;
+    private String address;
+    private String phoneNumber;
     private String role;
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, String address, String phoneNumber, String role) {
         this.username = username;
         this.password = password;
+        this.address=address;
+        this.phoneNumber=phoneNumber;
         this.role = role;
     }
 
@@ -33,6 +37,22 @@ public class User {
         this.password = password;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getRole() {
         return role;
     }
@@ -50,6 +70,8 @@ public class User {
 
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (address != null ? !address.equals(user.address) : user.address != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
         return role != null ? role.equals(user.role) : user.role == null;
     }
 
@@ -57,6 +79,8 @@ public class User {
     public int hashCode() {
         int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
