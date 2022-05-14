@@ -41,9 +41,12 @@ public class UserService {
             if (Objects.equals(username, user.getUsername())) {
                 return true;
             }
-
         }
         return false;
+    }
+
+    public static String isCustomer(User username)  {
+        return username.getRole();
     }
 
     private static String encodePassword(String salt, String password) {
