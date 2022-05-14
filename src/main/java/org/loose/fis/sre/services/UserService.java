@@ -36,6 +36,19 @@ public class UserService {
         }
     }
 
+    public static Boolean doesCredsMatchForLogin(String username) {
+        for(User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String isCustomer(User username)  {
+        return username.getRole();
+    }
+
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
