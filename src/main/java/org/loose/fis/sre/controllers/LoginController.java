@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static org.loose.fis.sre.services.UserService.doesCredsMatchForLogin;
+import static org.loose.fis.sre.services.UserService.isCustomer;
 
 public class LoginController {
     @FXML
