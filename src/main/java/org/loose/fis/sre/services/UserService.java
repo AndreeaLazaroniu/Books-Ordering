@@ -45,10 +45,11 @@ public class UserService {
         return false;
     }
 
-    public static boolean doesCredsMatchForLogin(String username)  {
-        for (User user : userRepository.find()) {
-            if (Objects.equals(username, user.getUsername()))
+    public static Boolean doesCredsMatchForLogin(String username) {
+        for(User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
                 return true;
+            }
         }
         return false;
     }
