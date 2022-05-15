@@ -36,6 +36,15 @@ public class UserService {
         }
     }
 
+    public static boolean checkRole(String username) {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                if(Objects.equals(user.getRole(),"Customer"))
+                    return true;
+        }
+        return false;
+    }
+
     public static Boolean doesCredsMatchForLogin(String username) {
         for(User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername())) {
@@ -43,10 +52,6 @@ public class UserService {
             }
         }
         return false;
-    }
-
-    public static String isCustomer(User username)  {
-        return username.getRole();
     }
 
     private static String encodePassword(String salt, String password) {
