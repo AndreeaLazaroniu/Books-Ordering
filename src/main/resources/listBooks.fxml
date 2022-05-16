@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ListBooksController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FDCE76;">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="205.0" style="-fx-background-color: #7B5207;">
+               <children>
+                  <Label layoutX="5.0" layoutY="166.0" text="LIST OF BOOKS">
+                     <font>
+                        <Font name="Magneto Bold" size="19.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.2145110410094637" startY="0.6403785609296443">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Button fx:id="cancelButton" layoutY="1.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" text="Cancel" />
+                  <Text fx:id="errorMesaage" layoutX="52.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="table" layoutX="213.0" layoutY="14.0" prefHeight="362.0" prefWidth="379.0">
+              <columns>
+                <TableColumn fx:id="title" prefWidth="75.0" text="Title" />
+                <TableColumn fx:id="author" prefWidth="75.0" text="Author" />
+                  <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
+                  <TableColumn fx:id="pageNumber" prefWidth="83.99993896484375" text="pageNumber" />
+                  <TableColumn fx:id="genre" prefWidth="66.666748046875" text="Genre" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
