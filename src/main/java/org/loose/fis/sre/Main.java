@@ -20,7 +20,6 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         BookService.initDatabase();
-        //OrderService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root));
