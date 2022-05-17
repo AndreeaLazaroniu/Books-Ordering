@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static org.loose.fis.sre.services.UserService.doesCredsMatchForLogin;
-import static org.loose.fis.sre.services.UserService.checkRole;
+import static org.loose.fis.sre.services.UserService.isCustomer;
 
 public class LoginController {
     @FXML
@@ -40,28 +40,14 @@ public class LoginController {
 
     @FXML
     public void handleLoginAction() {
-        if(!usernameField.getText().isEmpty() && !passwordField.getText().isEmpty())
-        {
-            if (UserService.doesCredsMatchForLogin(usernameField.getText())) {
-                if (UserService.checkRole(usernameField.getText()))
-                {
-                    System.out.println("Authentication succesfully");
-                    validateLogin();
-                } else
-                {
-                    createAccountForm();
-                }
-            }
-            else {
-                loginMessage.setText("no entry matching this user");
-
-            }
-        }else
-        {
-            {
-                loginMessage.setText("Please enter username and password");
-            }
+        if(usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
+            loginMessage.setText("Fields cannot be empty.");
+        } else {
+           if(doesCredsMatchForLogin(usernameField.getText())) {
+               validateLogin();
+           }
         }
+
     }
 
     @FXML
@@ -76,7 +62,7 @@ public class LoginController {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
             Stage registerStage = (Stage) loginButton.getScene().getWindow();
             registerStage.setTitle("Register");
-            registerStage.setScene(new Scene(root));
+            registerStage.setScene(new Scene(root, 300, 275));
             registerStage.show();
         }catch(IOException e)
         {

@@ -36,20 +36,20 @@ public class UserService {
         }
     }
 
-    public static Boolean doesCredsMatchForLogin(String username) {
-        for(User user : userRepository.find()) {
-            if (Objects.equals(username, user.getUsername())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static boolean checkRole(String username) {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 if(Objects.equals(user.getRole(),"Customer"))
                     return true;
+        }
+        return false;
+    }
+
+    public static Boolean doesCredsMatchForLogin(String username) {
+        for(User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                return true;
+            }
         }
         return false;
     }
