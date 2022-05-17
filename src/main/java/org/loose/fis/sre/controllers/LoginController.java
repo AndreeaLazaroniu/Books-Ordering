@@ -49,7 +49,7 @@ public class LoginController {
                     validateLogin();
                 } else
                 {
-                    // TBW - Manager authentication
+                    createAccountForm();
                 }
             }
             else {
@@ -76,7 +76,7 @@ public class LoginController {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
             Stage registerStage = (Stage) loginButton.getScene().getWindow();
             registerStage.setTitle("Register");
-            registerStage.setScene(new Scene(root, 300, 275));
+            registerStage.setScene(new Scene(root));
             registerStage.show();
         }catch(IOException e)
         {
