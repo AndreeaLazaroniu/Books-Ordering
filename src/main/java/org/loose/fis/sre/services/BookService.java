@@ -61,7 +61,6 @@ public class BookService {
         return totalPrice;
     }
 
-
     @NotNull
     public static ObservableList<Book> getBooks() {
         ObservableList<Book> books = FXCollections.observableArrayList();
@@ -78,7 +77,6 @@ public class BookService {
                 bookRepository.update(book);
         }
     }
-
 
     private static void checkBookDoesNotAlreadyExist(String title) throws TitleAlreadyExistsException {
         for (Book book : bookRepository.find()) {
