@@ -40,6 +40,9 @@ public class ListBooksController implements Initializable {
     private Button addButton;
 
     @FXML
+    private Button deleteButton;
+
+    @FXML
     private Button cancelButton;
 
     @FXML
@@ -100,4 +103,23 @@ public class ListBooksController implements Initializable {
         }
     }
 
+    public void deleteButtonOnAction()
+    {
+        bookDeleteForm();
+    }
+
+    @FXML
+    public void bookDeleteForm() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("deleteBook.fxml"));
+            Stage registerStage = (Stage) deleteButton.getScene().getWindow();
+            registerStage.setTitle("Delete Book");
+            registerStage.setScene(new Scene(root));
+            registerStage.show();
+        }catch(IOException e)
+        {
+            errorMessage.setText("error");
+        }
+    }
 }

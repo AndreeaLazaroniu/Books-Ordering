@@ -32,6 +32,7 @@
                         </LinearGradient>
                      </textFill>
                   </Label>
+                  <Button fx:id="deleteButton" layoutX="139.0" layoutY="353.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" text="DELETE" />
                   <Button fx:id="addButton" layoutX="14.0" layoutY="353.0" mnemonicParsing="false" onAction="#addButtonOnAction" text="ADD" />
                   <Button fx:id="cancelButton" layoutY="1.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" text="Cancel" />
                   <Text fx:id="errorMesaage" layoutX="52.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" />
