@@ -37,6 +37,9 @@ public class ListBooksController implements Initializable {
     private TableColumn<Book, String> genre;
 
     @FXML
+    private Button editButton;
+
+    @FXML
     private Button addButton;
 
     @FXML
@@ -122,4 +125,25 @@ public class ListBooksController implements Initializable {
             errorMessage.setText("error");
         }
     }
+
+    public void editButtonOnAction()
+    {
+        bookEditForm();
+    }
+
+    @FXML
+    public void bookEditForm() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("editBook.fxml"));
+            Stage registerStage = (Stage) editButton.getScene().getWindow();
+            registerStage.setTitle("Edit Book");
+            registerStage.setScene(new Scene(root));
+            registerStage.show();
+        }catch(IOException e)
+        {
+            errorMessage.setText("error");
+        }
+    }
+
 }
