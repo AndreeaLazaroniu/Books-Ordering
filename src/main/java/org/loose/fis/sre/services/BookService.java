@@ -46,6 +46,21 @@ public class BookService {
         }
         return books;
     }
+    public static Double totalOrder(Book[] books) {
+        double totalPrice=0.0;
+        for(int i = 0; i < 5; i++)
+        {
+            totalPrice = totalPrice + Double.parseDouble(books[i].getPrice());
+        }
+        return totalPrice;
+    }
+    private static void checkBookDoesExist(String title) throws BookDoesntExistException {
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(title, book.getTitle()))
+                throw new BookDoesntExistException(title);
+        }
+    }
+
 }
 
 
