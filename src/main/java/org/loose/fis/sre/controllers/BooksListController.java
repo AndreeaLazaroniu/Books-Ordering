@@ -115,7 +115,7 @@ public class BooksListController implements Initializable {
 
         if (book.getTitle().toLowerCase().contains(lowerCaseFilterString)) {
             return true;
-        } else return book.getAuthor().toLowerCase().contains(lowerCaseFilterString);// Does not match
+        } else return book.getAuthor().toLowerCase().contains(lowerCaseFilterString);
     }
     @FXML
     private void reapplyTableSortOrder() {
@@ -124,6 +124,20 @@ public class BooksListController implements Initializable {
         table.getSortOrder().addAll(sortOrder);
     }
 
+    @FXML
+    public void navigateToOrderView() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("bookOrder.fxml")));
+            Stage registerStage = (Stage) orderButton.getScene().getWindow();
+            registerStage.setTitle("Book Order");
+            registerStage.setScene(new Scene(root));
+            registerStage.show();
+        }catch(IOException e)
+        {
+            errorMessage.setText("error");
+        }
+    }
 
     @FXML
     public void cancelButtonOnAction()
@@ -133,7 +147,7 @@ public class BooksListController implements Initializable {
 
     @FXML
     public void backToHomePageForm() {
-        Parent root = null;
+        Parent root;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("homePage.fxml")));
             Stage registerStage = (Stage) cancelButton.getScene().getWindow();
