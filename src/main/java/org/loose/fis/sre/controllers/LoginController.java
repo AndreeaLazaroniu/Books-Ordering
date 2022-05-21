@@ -90,7 +90,7 @@ public class LoginController {
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("homePage.fxml")));
             Stage registerStage = (Stage) loginButton.getScene().getWindow();
-            registerStage.setTitle("");
+            registerStage.setTitle("Home Page");
             registerStage.setScene(new Scene(root));
             registerStage.show();
         }catch(IOException e)
