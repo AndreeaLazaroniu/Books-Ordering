@@ -17,8 +17,8 @@ import org.loose.fis.sre.services.UserService;
 import java.io.IOException;
 import java.util.Objects;
 
-import static org.loose.fis.sre.services.UserService.doesCredsMatchForLogin;
-import static org.loose.fis.sre.services.UserService.checkRole;
+import static org.loose.fis.sre.services.UserService.*;
+import static org.loose.fis.sre.services.UserService.returnUsernameCurrent;
 
 public class LoginController {
     @FXML
@@ -32,11 +32,16 @@ public class LoginController {
     @FXML
     private Button loginButton;
     @FXML
+    private Button registerButton;
+
+    @FXML
     public void cancelButtonOnAction(ActionEvent event)
     {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
+
+    public static String usernameCurrent;
 
     @FXML
     public void handleLoginAction() {
@@ -46,10 +51,11 @@ public class LoginController {
                 if (UserService.checkRole(usernameField.getText()))
                 {
                     System.out.println("Authentication succesfully");
+                    usernameCurrent = returnUsernameCurrent(usernameField.getText());
                     validateLogin();
                 } else
                 {
-                    createAccountForm();
+                    createShopForm();
                 }
             }
             else {
@@ -70,12 +76,11 @@ public class LoginController {
     }
 
     @FXML
-    public void createAccountForm() {
-        Parent root = null;
+    public void createShopForm() {
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("shop.fxml"));
             Stage registerStage = (Stage) loginButton.getScene().getWindow();
-            registerStage.setTitle("Register");
+            registerStage.setTitle("Shop");
             registerStage.setScene(new Scene(root));
             registerStage.show();
         }catch(IOException e)
@@ -91,6 +96,26 @@ public class LoginController {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("homePage.fxml")));
             Stage registerStage = (Stage) loginButton.getScene().getWindow();
             registerStage.setTitle("Home Page");
+            registerStage.setScene(new Scene(root));
+            registerStage.show();
+        }catch(IOException e)
+        {
+            loginMessage.setText("error");
+        }
+    }
+
+    @FXML
+    public void registerButtonOnAction()
+    {
+        createRegisterForm();
+    }
+
+    @FXML
+    public void createRegisterForm() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
+            Stage registerStage = (Stage) loginButton.getScene().getWindow();
+            registerStage.setTitle("Register");
             registerStage.setScene(new Scene(root));
             registerStage.show();
         }catch(IOException e)
