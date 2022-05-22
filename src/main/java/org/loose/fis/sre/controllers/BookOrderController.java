@@ -1,4 +1,4 @@
- package org.loose.fis.sre.controllers;
+package org.loose.fis.sre.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.loose.fis.sre.services.OrderBookService;
+import org.loose.fis.sre.controllers.LoginController;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -27,8 +28,8 @@ public class BookOrderController {
 
     @FXML
     public void handleOrderingAction() {
-        OrderBookService.addOrder("", titleField.getText(), "In actualizare", quantityField.getText(), "-");
-        System.out.println("book was succesfully ordered");
+        OrderBookService.addOrder(LoginController.usernameCurrent, titleField.getText(), "In actualizare", quantityField.getText(), "-");
+        System.out.println("book was successfully ordered");
         backToHomePageForm();
     }
     @FXML
