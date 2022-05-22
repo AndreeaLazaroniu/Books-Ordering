@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import org.loose.fis.sre.services.FileSystemService;
 import org.loose.fis.sre.services.UserService;
 import org.loose.fis.sre.services.BookService;
-import org.loose.fis.sre.services.OrderService;
 import org.loose.fis.sre.services.OrderBookService;
 
 import java.nio.file.Files;
@@ -20,7 +19,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
-        OrderService.initDatabase();
         BookService.initDatabase();
         OrderBookService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
