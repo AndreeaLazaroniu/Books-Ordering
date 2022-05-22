@@ -9,8 +9,7 @@ import javafx.scene.text.Text;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-//import org.loose.fis.sre.services.BookService;
-import org.loose.fis.sre.services.OrderService;
+import org.loose.fis.sre.services.OrderBookService;
 
 import java.io.IOException;
 
@@ -21,6 +20,8 @@ public class StatusOrderController {
     private TextField nameField;
     @FXML
     private TextField statusField;
+    @FXML
+    private TextField timeField;
     @FXML
     private Button cancelButton;
     @FXML
@@ -49,7 +50,7 @@ public class StatusOrderController {
 
     @FXML
     public void handleStatusAction() {
-        OrderService.editStatus(nameField.getText(), statusField.getText());
+        OrderBookService.editStatus(nameField.getText(), statusField.getText(), timeField.getText());
         backToListOrdersForm2();
     }
 
