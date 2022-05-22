@@ -17,7 +17,7 @@
                 <Font name="Algerian" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="myordersButton" layoutX="352.0" layoutY="253.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="149.0" text="My orders" textFill="#ff8000">
+        <Button fx:id="myordersButton" layoutX="352.0" layoutY="253.0" mnemonicParsing="false" onAction="#myOrdersOnAction" prefHeight="79.0" prefWidth="149.0" text="My orders" textFill="#ff8000">
             <font>
                 <Font name="Algerian" size="15.0" />
             </font>
