@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff8dc;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.BookDetailsController">
+   <children>
+      <Label layoutX="-2.0" layoutY="-2.0" prefHeight="51.0" prefWidth="614.0" style="-fx-background-color: #deb887;" text="Book Details" textAlignment="CENTER">
+         <font>
+            <Font name="Bookman Old Style" size="34.0" />
+         </font></Label>
+      <Button fx:id="cancelButton" layoutX="540.0" layoutY="-2.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #e96151;" text="Cancel" underline="true">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font></Button>
+      <Button fx:id="addingButton" layoutX="492.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleAddingAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #f0f8ff;" text="Add book" underline="true">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="20.0" layoutY="100.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #d2691e;" text="Title:">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label contentDisplay="CENTER" layoutX="20.0" layoutY="150.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #d2691e;" text="Author:" textAlignment="CENTER">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="20.0" layoutY="200.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #d2691e;" text="Price:">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="20.0" layoutY="300.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #d2691e;" text="Genre:">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="20.0" layoutY="250.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #d2691e;" text="Page Number:">
+         <font>
+            <Font name="Bookman Old Style Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="titleField" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="pageNumberField" layoutX="150.0" layoutY="250.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="priceField" layoutX="150.0" layoutY="200.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="authorField" layoutX="150.0" layoutY="150.0" prefHeight="25.0" prefWidth="250.0" />
+      <ChoiceBox fx:id="genre" layoutX="150.0" layoutY="300.0" prefHeight="25.0" prefWidth="250.0" />
+      <Text fx:id="addingMessage" layoutX="441.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="errorMessage" layoutX="492.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   </children>
+</AnchorPane>

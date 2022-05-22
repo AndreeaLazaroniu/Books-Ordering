@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static org.loose.fis.sre.services.UserService.*;
-import static org.loose.fis.sre.services.UserService.returnUsernameCurrent;
 
 public class LoginController {
     @FXML
@@ -124,4 +123,6 @@ public class LoginController {
         }
     }
 }
+
+
 

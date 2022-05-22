@@ -50,7 +50,7 @@ public class HomePageController implements Initializable {
     {
         ToMyOrdersPageForm();
     }
-    
+
     @FXML
     public void ToMyOrdersPageForm() {
         Parent root;
@@ -61,8 +61,8 @@ public class HomePageController implements Initializable {
             registerStage.setScene(new Scene(root));
             registerStage.show();
         } catch (IOException e) {
-        e.printStackTrace();
-    }
+            e.printStackTrace();
+        }
     }
     @FXML
     public void cancelButtonOnAction()
