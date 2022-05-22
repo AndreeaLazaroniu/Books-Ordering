@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
+import java.util.List;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
@@ -26,7 +27,7 @@ public class UserService {
 
     public static void addUser(String username, String password, String address, String phoneNumber, String role) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, address, phoneNumber, encodePassword(username, password), role));
+        userRepository.insert(new User(username, encodePassword(username, password), address, phoneNumber, role));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -43,6 +44,19 @@ public class UserService {
                     return true;
         }
         return false;
+    }
+
+    public static String returnUsernameCurrent(String username){
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                if(Objects.equals(user.getRole(),"Customer"))
+                    return user.getUsername();
+        }
+        return "";
+    }
+
+    public static List<User> getAllUsers() {
+        return userRepository.find().toList();
     }
 
     public static boolean doesCredsMatchForLogin(String username)  {

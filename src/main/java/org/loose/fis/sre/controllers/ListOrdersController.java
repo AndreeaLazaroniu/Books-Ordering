@@ -14,8 +14,8 @@ import javafx.stage.Stage;
 //import javafx.scene.layout.VBox;
 
 
-import org.loose.fis.sre.services.OrderService;
-import org.loose.fis.sre.model.Order;
+import org.loose.fis.sre.services.OrderBookService;
+import org.loose.fis.sre.model.OrderBook;
 
 //import java.io.File;
 import java.io.IOException;
@@ -24,19 +24,19 @@ import java.util.ResourceBundle;
 
 public class ListOrdersController implements Initializable {
     @FXML
-    private TableView<Order> table;
+    private TableView<OrderBook> table;
 
     @FXML
-    private TableColumn<Order, String> customerName;
+    private TableColumn<OrderBook, String> customerName;
 
     @FXML
-    private TableColumn<Order, String> status;
+    private TableColumn<OrderBook, String> status;
 
     @FXML
-    private TableColumn<Order, String> total;
+    private TableColumn<OrderBook, String> total;
 
     @FXML
-    private TableColumn<Order, String> time;
+    private TableColumn<OrderBook, String> time;
 
     @FXML
     private Button cancelButton;
@@ -54,7 +54,7 @@ public class ListOrdersController implements Initializable {
         total.setCellValueFactory(new PropertyValueFactory<>("total"));
         time.setCellValueFactory(new PropertyValueFactory<>("time"));
 
-        table.setItems(OrderService.getOrders());
+        table.setItems(OrderBookService.getOrders());
     }
 
     @FXML
