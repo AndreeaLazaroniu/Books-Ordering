@@ -47,6 +47,9 @@ public class MyOrdersController implements Initializable {
     @FXML
     private Text errorMessage;
 
+    @FXML
+    private Button confirmButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         orderedBook.setCellValueFactory(new PropertyValueFactory<>("orderedBook"));
@@ -94,4 +97,22 @@ public class MyOrdersController implements Initializable {
             errorMessage.setText("error");
         }
     }
+    @FXML
+    public void confirmButtonOnAction() {
+        confirmPageForm();
+    }
+    @FXML
+    public void confirmPageForm() {
+        Parent root;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("confirmOrder.fxml")));
+            Stage registerStage = (Stage) confirmButton.getScene().getWindow();
+            registerStage.setTitle("Confirm order Page");
+            registerStage.setScene(new Scene(root));
+            registerStage.show();
+        } catch (IOException e) {
+            errorMessage.setText("error");
+        }
+    }
+
 }
