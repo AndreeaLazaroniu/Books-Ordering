@@ -43,20 +43,10 @@ public class DeleteBooksController {
             errorMessage.setText("error");
         }
     }
-
-
     @FXML
     public void handleDeletingAction() {
         BookService.deleteBook(titleField.getText());
         backToListBooksForm2();
-        /*
-        try {
-            BookService.deleteBook(titleField.getText());
-            backToListBooksForm2();
-        } catch (BookDoesntExistException e) {
-            errorMessage.setText(e.getMessage());
-        }
-         */
     }
 
     @FXML

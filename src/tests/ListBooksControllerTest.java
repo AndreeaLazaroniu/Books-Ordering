@@ -1,32 +1,38 @@
-import org.junit.Before;
-import org.junit.jupiter.api.*;
+import org.jetbrains.annotations.NotNull;
 //import org.loose.fis.sre.model.User;
-import org.loose.fis.sre.controllers.RegistrationController;
 import static org.testfx.assertions.api.Assertions.assertThat;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.loose.fis.sre.services.FileSystemService;
-import org.loose.fis.sre.services.UserService;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 @ExtendWith(ApplicationExtension.class)
 
-public class ListBooksControllerTes {
+public class ListBooksControllerTest {
+
+    @Start
+    void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("listBooks.fxml"));
+        primaryStage.setTitle("List of Books");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
 
     @Test
     void testListBooks(FxRobot robot) {
         robot.clickOn("#addButton");
         robot.clickOn("#cancelButton");
-        robot.clickOn("#");
+        robot.clickOn("#editButton");
+        robot.clickOn("#cancelButton");
+        robot.clickOn("#deleteButton");
+        robot.clickOn("#cancelButton");
 
-
+        /*
         //assertThat(robot.lookup("#registrationMessage").queryText()).hasText("Account created successfully!");
         assertThat(UserService.getAllUsers()).size().isEqualTo(1);
         robot.clickOn("#registerButton");
@@ -53,7 +59,6 @@ public class ListBooksControllerTes {
         //assertThat(robot.lookup("#registrationMessage").queryText()).hasText("Account created successfully!");
         assertThat(UserService.getAllUsers()).size().isEqualTo(2);
         robot.clickOn("#cancelButton");
+        */
     }
-
-
 }
