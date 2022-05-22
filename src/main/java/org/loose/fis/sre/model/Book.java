@@ -2,6 +2,8 @@ package org.loose.fis.sre.model;
 
 import org.dizitart.no2.objects.Id;
 
+import java.util.Objects;
+
 public class Book {
     @Id
     private String title;
@@ -48,11 +50,11 @@ public class Book {
 
         Book book = (Book) o;
 
-        if (title != null ? !title.equals(book.title) : book.title != null) return false;
-        if (author != null ? !author.equals(book.author) : book.author != null) return false;
-        if (price != null ? !price.equals(book.price) : book.price != null) return false;
-        if (pageNumber != null ? !pageNumber.equals(book.pageNumber) : book.pageNumber != null) return false;
-        return genre != null ? genre.equals(book.genre) : book.genre == null;
+        if (!Objects.equals(title, book.title)) return false;
+        if (!Objects.equals(author, book.author)) return false;
+        if (!Objects.equals(price, book.price)) return false;
+        if (!Objects.equals(pageNumber, book.pageNumber)) return false;
+        return Objects.equals(genre, book.genre);
     }
 
     @Override
