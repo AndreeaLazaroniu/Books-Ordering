@@ -1,8 +1,10 @@
 package org.loose.fis.sre.model;
 
 import java.util.Objects;
+import org.dizitart.no2.objects.Id;
 
 public class OrderBook {
+    @Id
     private String customerName;
     private String orderedBook;
     private String status;
@@ -55,11 +57,11 @@ public class OrderBook {
 
         OrderBook order = (OrderBook) o;
 
-        if (!Objects.equals(customerName, order.customerName)) return false;
-        if (!Objects.equals(orderedBook, order.orderedBook)) return false;
-        if (!Objects.equals(status, order.status)) return false;
-        if (!Objects.equals(total, order.total)) return false;
-        return Objects.equals(time, order.time);
+        if (customerName != null ? !customerName.equals(order.customerName) : order.customerName != null) return false;
+        if (orderedBook != null ? !orderedBook.equals(order.orderedBook) : order.orderedBook != null) return false;
+        if (status != null ? !status.equals(order.status) : order.status != null) return false;
+        if (total != null ? !total.equals(order.total) : order.total != null) return false;
+        return time != null ? time.equals(order.time) : order.time == null;
     }
 
     @Override
