@@ -79,6 +79,14 @@ public class BookService {
         }
     }
 
+    public static String getBookPrice(String title) {
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(title, book.getTitle()))
+                return book.getPrice();
+        }
+        return "";
+    }
+
 
     private static void checkBookDoesNotAlreadyExist(String title) throws TitleAlreadyExistsException {
         for (Book book : bookRepository.find()) {
