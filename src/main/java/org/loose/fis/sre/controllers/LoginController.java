@@ -17,8 +17,7 @@ import org.loose.fis.sre.services.UserService;
 import java.io.IOException;
 import java.util.Objects;
 
-import static org.loose.fis.sre.services.UserService.doesCredsMatchForLogin;
-import static org.loose.fis.sre.services.UserService.isCustomer;
+import static org.loose.fis.sre.services.UserService.*;
 
 public class LoginController {
     @FXML
@@ -32,22 +31,42 @@ public class LoginController {
     @FXML
     private Button loginButton;
     @FXML
+    private Button registerButton;
+
+    @FXML
     public void cancelButtonOnAction(ActionEvent event)
     {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 
+    public static String usernameCurrent;
+
     @FXML
     public void handleLoginAction() {
-        if(usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
-            loginMessage.setText("Fields cannot be empty.");
-        } else {
-           if(doesCredsMatchForLogin(usernameField.getText())) {
-               validateLogin();
-           }
-        }
+        if(!usernameField.getText().isEmpty() && !passwordField.getText().isEmpty())
+        {
+            if (UserService.doesCredsMatchForLogin(usernameField.getText())) {
+                if (UserService.checkRole(usernameField.getText()))
+                {
+                    System.out.println("Authentication succesfully");
+                    usernameCurrent = returnUsernameCurrent(usernameField.getText());
+                    validateLogin();
+                } else
+                {
+                    createShopForm();
+                }
+            }
+            else {
+                loginMessage.setText("no entry matching this user");
 
+            }
+        }else
+        {
+            {
+                loginMessage.setText("Please enter username and password");
+            }
+        }
     }
 
     @FXML
@@ -56,13 +75,12 @@ public class LoginController {
     }
 
     @FXML
-    public void createAccountForm() {
-        Parent root = null;
+    public void createShopForm() {
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("shop.fxml"));
             Stage registerStage = (Stage) loginButton.getScene().getWindow();
-            registerStage.setTitle("Register");
-            registerStage.setScene(new Scene(root, 300, 275));
+            registerStage.setTitle("Shop");
+            registerStage.setScene(new Scene(root));
             registerStage.show();
         }catch(IOException e)
         {
@@ -84,5 +102,27 @@ public class LoginController {
             loginMessage.setText("error");
         }
     }
+
+    @FXML
+    public void registerButtonOnAction()
+    {
+        createRegisterForm();
+    }
+
+    @FXML
+    public void createRegisterForm() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
+            Stage registerStage = (Stage) loginButton.getScene().getWindow();
+            registerStage.setTitle("Register");
+            registerStage.setScene(new Scene(root));
+            registerStage.show();
+        }catch(IOException e)
+        {
+            loginMessage.setText("error");
+        }
+    }
 }
+
+
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FDCE76;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.MyOrdersController">
+   <children>
+      <TableView fx:id="table" layoutX="254.0" layoutY="21.0" prefHeight="357.0" prefWidth="321.0">
+        <columns>
+          <TableColumn fx:id="orderedBook" text="Name" />
+          <TableColumn fx:id="status" text="Status" />
+            <TableColumn fx:id="total" text="Total" />
+            <TableColumn fx:id="time" text="Time" />
+        </columns>
+      </TableView>
+      <AnchorPane prefHeight="400.0" prefWidth="220.0" style="-fx-background-color: #7B5207;">
+         <children>
+            <Text layoutX="7.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Orders" textAlignment="CENTER">
+               <font>
+                  <Font name="Bell MT" size="46.0" />
+               </font>
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.3974763271560428">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.3947368562221527" green="0.008528265170753002" blue="0.008528265170753002" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Text>
+            <Button fx:id="cancelButton" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="32.0" prefWidth="79.0" text="Cancel" textFill="#bf6400">
+               <font>
+                  <Font name="Algerian" size="15.0" />
+               </font></Button>
+            <Button fx:id="deleteButton" layoutX="18.0" layoutY="294.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="184.0" text="Confirm Delivery" textFill="#b25000">
+               <font>
+                  <Font name="Algerian" size="17.0" />
+               </font></Button>
+            <Text fx:id="errorMessage" layoutX="99.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Button fx:id="refreshButton" layoutX="99.0" layoutY="353.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="20.0" prefWidth="98.0" text="Refresh" textFill="#b25320">
+               <font>
+                  <Font name="Algerian" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
