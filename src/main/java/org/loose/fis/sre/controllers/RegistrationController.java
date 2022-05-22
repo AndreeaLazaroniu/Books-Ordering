@@ -43,17 +43,22 @@ public class RegistrationController {
     @FXML
     public void cancelButtonOnAction()
     {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+        createLoginForm();
     }
 
     @FXML
     public void handleRegisterAction() {
-        try {
-            UserService.addUser(usernameField.getText(), passwordField.getText(), addressField.getText(), phoneNumberField.getText(), (String) role.getValue());
-            createLoginForm();
-        } catch (UsernameAlreadyExistsException e) {
-            registrationMessage.setText(e.getMessage());
+        if(!usernameField.getText().isEmpty() && !passwordField.getText().isEmpty() && !addressField.getText().isEmpty() && !phoneNumberField.getText().isEmpty() && role.getValue()!=null) {
+            try {
+                UserService.addUser(usernameField.getText(), passwordField.getText(), addressField.getText(), phoneNumberField.getText(), (String) role.getValue());
+                registrationMessage.setText("Account successfully created!");
+                createLoginForm();
+            } catch (UsernameAlreadyExistsException e) {
+                registrationMessage.setText(e.getMessage());
+            }
+        }else
+        {
+            registrationMessage.setText("Please complete registration fields!");
         }
     }
 

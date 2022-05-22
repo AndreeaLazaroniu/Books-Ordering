@@ -52,8 +52,22 @@ public class ShopController implements Initializable{
     @FXML
     public void cancelButtonOnAction()
     {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+        createLoginForm();
+    }
+
+    @FXML
+    public void createLoginForm() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+            Stage registerStage = (Stage) cancelButton.getScene().getWindow();
+            registerStage.setTitle("Login");
+            registerStage.setScene(new Scene(root));
+            registerStage.show();
+        }catch(IOException e)
+        {
+            errorMessage.setText("error");
+        }
     }
 
     @FXML
