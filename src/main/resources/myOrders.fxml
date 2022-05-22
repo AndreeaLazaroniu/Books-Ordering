@@ -42,7 +42,7 @@
                <font>
                   <Font name="Algerian" size="15.0" />
                </font></Button>
-            <Button fx:id="deleteButton" layoutX="18.0" layoutY="294.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="184.0" text="Confirm Delivery" textFill="#b25000">
+            <Button fx:id="confirmButton" layoutX="18.0" layoutY="294.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="39.0" prefWidth="184.0" text="Confirm Delivery" textFill="#b25000">
                <font>
                   <Font name="Algerian" size="17.0" />
                </font></Button>

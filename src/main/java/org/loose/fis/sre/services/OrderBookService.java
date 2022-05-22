@@ -59,4 +59,15 @@ public class OrderBookService {
         }
     }
 
+    public static void deleteOrder(String customerName) {
+        for (OrderBook order : orderRepository.find()) {
+            if (Objects.equals(customerName, order.getCustomerName())) {
+                orderRepository.remove(order);
+            }
+            else {
+                System.out.println("Couldn't find any order by " + customerName);
+            }
+        }
+    }
+
 }
