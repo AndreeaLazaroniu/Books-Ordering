@@ -37,21 +37,6 @@ public class BookService {
         }
     }
 
-    @NotNull
-    public static Book[] arrBooks(String[] titles){
-        Book[] books = new Book[5];
-        for(int i=0; i<5; i++)
-        {
-            for (Book book : bookRepository.find()) {
-                if (Objects.equals(titles[i], book.getTitle()))
-                {
-                    books[i] = book;
-                }
-            }
-        }
-        return books;
-    }
-
     public static Double totalOrder(Book[] books) {
         double totalPrice=0.0;
         for(int i = 0; i < 5; i++)
@@ -60,7 +45,6 @@ public class BookService {
         }
         return totalPrice;
     }
-
 
     @NotNull
     public static ObservableList<Book> getBooks() {

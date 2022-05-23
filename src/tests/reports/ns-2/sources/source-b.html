@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > RegistrationController</title>
+  <title>Coverage Report > MyOrdersController</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">org.loose.fis.sre.controllers</a>
 </div>
 
-<h1>Coverage Summary for Class: RegistrationController (org.loose.fis.sre.controllers)</h1>
+<h1>Coverage Summary for Class: MyOrdersController (org.loose.fis.sre.controllers)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">RegistrationController</td>
+  <td class="name">MyOrdersController</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -53,7 +53,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/5)
+    (0/8)
   </span>
 </td>
 <td class="coverageStat">
@@ -61,7 +61,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/20)
+    (0/34)
   </span>
 </td>
 </tr>
@@ -75,83 +75,122 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package org.loose.fis.sre.controllers;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import javafx.fxml.FXML;
-<i class="no-highlight">4</i>&nbsp;import javafx.fxml.FXMLLoader;
-<i class="no-highlight">5</i>&nbsp;import javafx.scene.Parent;
-<i class="no-highlight">6</i>&nbsp;import javafx.scene.control.Button;
-<i class="no-highlight">7</i>&nbsp;import javafx.scene.control.ChoiceBox;
-<i class="no-highlight">8</i>&nbsp;import javafx.scene.control.PasswordField;
-<i class="no-highlight">9</i>&nbsp;import javafx.scene.control.TextField;
-<i class="no-highlight">10</i>&nbsp;import javafx.scene.text.Text;
-<i class="no-highlight">11</i>&nbsp;import javafx.scene.Scene;
+<i class="no-highlight">3</i>&nbsp;
+<i class="no-highlight">4</i>&nbsp;import javafx.fxml.FXML;
+<i class="no-highlight">5</i>&nbsp;import javafx.fxml.FXMLLoader;
+<i class="no-highlight">6</i>&nbsp;import javafx.fxml.Initializable;
+<i class="no-highlight">7</i>&nbsp;import javafx.scene.Parent;
+<i class="no-highlight">8</i>&nbsp;import javafx.scene.control.*;
+<i class="no-highlight">9</i>&nbsp;import javafx.scene.Scene;
+<i class="no-highlight">10</i>&nbsp;import javafx.scene.control.cell.PropertyValueFactory;
+<i class="no-highlight">11</i>&nbsp;import javafx.scene.text.Text;
 <i class="no-highlight">12</i>&nbsp;import javafx.stage.Stage;
-<i class="no-highlight">13</i>&nbsp;import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
-<i class="no-highlight">14</i>&nbsp;import org.loose.fis.sre.services.UserService;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;
 <i class="no-highlight">15</i>&nbsp;
-<i class="no-highlight">16</i>&nbsp;import java.io.IOException;
-<i class="no-highlight">17</i>&nbsp;
-<b class="nc"><i class="no-highlight">18</i>&nbsp;public class RegistrationController {</b>
+<i class="no-highlight">16</i>&nbsp;import org.loose.fis.sre.services.OrderBookService;
+<i class="no-highlight">17</i>&nbsp;import org.loose.fis.sre.model.OrderBook;
+<i class="no-highlight">18</i>&nbsp;
 <i class="no-highlight">19</i>&nbsp;
-<i class="no-highlight">20</i>&nbsp;    @FXML
-<i class="no-highlight">21</i>&nbsp;    private Text registrationMessage;
-<i class="no-highlight">22</i>&nbsp;    @FXML
-<i class="no-highlight">23</i>&nbsp;    private PasswordField passwordField;
-<i class="no-highlight">24</i>&nbsp;    @FXML
-<i class="no-highlight">25</i>&nbsp;    private TextField usernameField;
+<i class="no-highlight">20</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">21</i>&nbsp;import java.net.URL;
+<i class="no-highlight">22</i>&nbsp;import java.util.Objects;
+<i class="no-highlight">23</i>&nbsp;import java.util.ResourceBundle;
+<i class="no-highlight">24</i>&nbsp;
+<b class="nc"><i class="no-highlight">25</i>&nbsp;public class MyOrdersController implements Initializable {</b>
 <i class="no-highlight">26</i>&nbsp;    @FXML
-<i class="no-highlight">27</i>&nbsp;    private TextField addressField;
-<i class="no-highlight">28</i>&nbsp;    @FXML
-<i class="no-highlight">29</i>&nbsp;    private TextField phoneNumberField;
-<i class="no-highlight">30</i>&nbsp;    @FXML
-<i class="no-highlight">31</i>&nbsp;    private ChoiceBox role;
+<i class="no-highlight">27</i>&nbsp;    private TableView&lt;OrderBook&gt; table;
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    @FXML
+<i class="no-highlight">30</i>&nbsp;    private TableColumn&lt;OrderBook, String&gt; time;
+<i class="no-highlight">31</i>&nbsp;
 <i class="no-highlight">32</i>&nbsp;    @FXML
-<i class="no-highlight">33</i>&nbsp;    private Button cancelButton;
-<i class="no-highlight">34</i>&nbsp;    @FXML
-<i class="no-highlight">35</i>&nbsp;    private Button registerButton;
-<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;    private TableColumn&lt;OrderBook, String&gt; status;
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;    @FXML
+<i class="no-highlight">36</i>&nbsp;    private TableColumn&lt;OrderBook, String&gt; total;
 <i class="no-highlight">37</i>&nbsp;
 <i class="no-highlight">38</i>&nbsp;    @FXML
-<i class="no-highlight">39</i>&nbsp;    public void initialize() {
-<b class="nc"><i class="no-highlight">40</i>&nbsp;        role.getItems().addAll(&quot;Customer&quot;, &quot;BookShop Manager&quot;);</b>
-<i class="no-highlight">41</i>&nbsp;    }
-<i class="no-highlight">42</i>&nbsp;
-<i class="no-highlight">43</i>&nbsp;    @FXML
-<i class="no-highlight">44</i>&nbsp;    public void cancelButtonOnAction()
-<i class="no-highlight">45</i>&nbsp;    {
-<b class="nc"><i class="no-highlight">46</i>&nbsp;        createLoginForm();</b>
-<i class="no-highlight">47</i>&nbsp;    }
-<i class="no-highlight">48</i>&nbsp;
-<i class="no-highlight">49</i>&nbsp;    @FXML
-<i class="no-highlight">50</i>&nbsp;    public void handleRegisterAction() {
-<b class="nc"><i class="no-highlight">51</i>&nbsp;        if(!usernameField.getText().isEmpty() &amp;&amp; !passwordField.getText().isEmpty() &amp;&amp; !addressField.getText().isEmpty() &amp;&amp; !phoneNumberField.getText().isEmpty() &amp;&amp; role.getValue()!=null) {</b>
-<i class="no-highlight">52</i>&nbsp;            try {
-<b class="nc"><i class="no-highlight">53</i>&nbsp;                UserService.addUser(usernameField.getText(), passwordField.getText(), addressField.getText(), phoneNumberField.getText(), (String) role.getValue());</b>
-<b class="nc"><i class="no-highlight">54</i>&nbsp;                registrationMessage.setText(&quot;Account successfully created!&quot;);</b>
-<b class="nc"><i class="no-highlight">55</i>&nbsp;                createLoginForm();</b>
-<b class="nc"><i class="no-highlight">56</i>&nbsp;            } catch (UsernameAlreadyExistsException e) {</b>
-<b class="nc"><i class="no-highlight">57</i>&nbsp;                registrationMessage.setText(e.getMessage());</b>
-<b class="nc"><i class="no-highlight">58</i>&nbsp;            }</b>
-<i class="no-highlight">59</i>&nbsp;        }else
-<i class="no-highlight">60</i>&nbsp;        {
-<b class="nc"><i class="no-highlight">61</i>&nbsp;            registrationMessage.setText(&quot;Please complete registration fields!&quot;);</b>
-<i class="no-highlight">62</i>&nbsp;        }
-<i class="no-highlight">63</i>&nbsp;    }
-<i class="no-highlight">64</i>&nbsp;
-<i class="no-highlight">65</i>&nbsp;    @FXML
-<i class="no-highlight">66</i>&nbsp;    public void createLoginForm() {
-<b class="nc"><i class="no-highlight">67</i>&nbsp;        Parent root = null;</b>
-<i class="no-highlight">68</i>&nbsp;        try {
-<b class="nc"><i class="no-highlight">69</i>&nbsp;            root = FXMLLoader.load(getClass().getClassLoader().getResource(&quot;login.fxml&quot;));</b>
-<b class="nc"><i class="no-highlight">70</i>&nbsp;            Stage registerStage = (Stage) registerButton.getScene().getWindow();</b>
-<b class="nc"><i class="no-highlight">71</i>&nbsp;            registerStage.setTitle(&quot;Login&quot;);</b>
-<b class="nc"><i class="no-highlight">72</i>&nbsp;            registerStage.setScene(new Scene(root));</b>
-<b class="nc"><i class="no-highlight">73</i>&nbsp;            registerStage.show();</b>
-<b class="nc"><i class="no-highlight">74</i>&nbsp;        }catch(IOException e)</b>
-<i class="no-highlight">75</i>&nbsp;        {
-<b class="nc"><i class="no-highlight">76</i>&nbsp;            registrationMessage.setText(&quot;error&quot;);</b>
-<b class="nc"><i class="no-highlight">77</i>&nbsp;        }</b>
-<i class="no-highlight">78</i>&nbsp;    }
-<i class="no-highlight">79</i>&nbsp;}
+<i class="no-highlight">39</i>&nbsp;    private TableColumn&lt;OrderBook, String&gt; orderedBook;
+<i class="no-highlight">40</i>&nbsp;
+<i class="no-highlight">41</i>&nbsp;    @FXML
+<i class="no-highlight">42</i>&nbsp;    private Button cancelButton;
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;    @FXML
+<i class="no-highlight">45</i>&nbsp;    private Button refreshButton;
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;    @FXML
+<i class="no-highlight">48</i>&nbsp;    private Text errorMessage;
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    @FXML
+<i class="no-highlight">51</i>&nbsp;    private Button confirmButton;
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;    @Override
+<i class="no-highlight">54</i>&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        orderedBook.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;orderedBook&quot;));</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        status.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;status&quot;));</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;        total.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;total&quot;));</b>
+<b class="nc"><i class="no-highlight">58</i>&nbsp;        time.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;time&quot;));</b>
+<i class="no-highlight">59</i>&nbsp;
+<b class="nc"><i class="no-highlight">60</i>&nbsp;        table.setItems(OrderBookService.getOrdersCustomer(LoginController.usernameCurrent));</b>
+<i class="no-highlight">61</i>&nbsp;    }
+<i class="no-highlight">62</i>&nbsp;
+<i class="no-highlight">63</i>&nbsp;    @FXML
+<i class="no-highlight">64</i>&nbsp;    public void cancelButtonOnAction() {
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        backToHomePageForm();</b>
+<i class="no-highlight">66</i>&nbsp;    }
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;    @FXML
+<i class="no-highlight">69</i>&nbsp;    public void backToHomePageForm() {
+<b class="nc"><i class="no-highlight">70</i>&nbsp;        Parent root = null;</b>
+<i class="no-highlight">71</i>&nbsp;        try {
+<b class="nc"><i class="no-highlight">72</i>&nbsp;            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(&quot;homePage.fxml&quot;)));</b>
+<b class="nc"><i class="no-highlight">73</i>&nbsp;            Stage registerStage = (Stage) cancelButton.getScene().getWindow();</b>
+<b class="nc"><i class="no-highlight">74</i>&nbsp;            registerStage.setTitle(&quot;Home Page&quot;);</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;            registerStage.setScene(new Scene(root));</b>
+<b class="nc"><i class="no-highlight">76</i>&nbsp;            registerStage.show();</b>
+<b class="nc"><i class="no-highlight">77</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">78</i>&nbsp;            errorMessage.setText(&quot;error&quot;);</b>
+<b class="nc"><i class="no-highlight">79</i>&nbsp;        }</b>
+<i class="no-highlight">80</i>&nbsp;    }
+<i class="no-highlight">81</i>&nbsp;
+<i class="no-highlight">82</i>&nbsp;    @FXML
+<i class="no-highlight">83</i>&nbsp;    public void refreshButtonOnAction() {
+<b class="nc"><i class="no-highlight">84</i>&nbsp;        refreshPageForm();</b>
+<i class="no-highlight">85</i>&nbsp;    }
+<i class="no-highlight">86</i>&nbsp;
+<i class="no-highlight">87</i>&nbsp;    @FXML
+<i class="no-highlight">88</i>&nbsp;    public void refreshPageForm() {
+<i class="no-highlight">89</i>&nbsp;        Parent root;
+<i class="no-highlight">90</i>&nbsp;        try {
+<b class="nc"><i class="no-highlight">91</i>&nbsp;            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(&quot;myOrders.fxml&quot;)));</b>
+<b class="nc"><i class="no-highlight">92</i>&nbsp;            Stage registerStage = (Stage) refreshButton.getScene().getWindow();</b>
+<b class="nc"><i class="no-highlight">93</i>&nbsp;            registerStage.setTitle(&quot;My Orders Page&quot;);</b>
+<b class="nc"><i class="no-highlight">94</i>&nbsp;            registerStage.setScene(new Scene(root));</b>
+<b class="nc"><i class="no-highlight">95</i>&nbsp;            registerStage.show();</b>
+<b class="nc"><i class="no-highlight">96</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">97</i>&nbsp;            errorMessage.setText(&quot;error&quot;);</b>
+<b class="nc"><i class="no-highlight">98</i>&nbsp;        }</b>
+<i class="no-highlight">99</i>&nbsp;    }
+<i class="no-highlight">100</i>&nbsp;    @FXML
+<i class="no-highlight">101</i>&nbsp;    public void confirmButtonOnAction() {
+<b class="nc"><i class="no-highlight">102</i>&nbsp;        confirmPageForm();</b>
+<i class="no-highlight">103</i>&nbsp;    }
+<i class="no-highlight">104</i>&nbsp;    @FXML
+<i class="no-highlight">105</i>&nbsp;    public void confirmPageForm() {
+<i class="no-highlight">106</i>&nbsp;        Parent root;
+<i class="no-highlight">107</i>&nbsp;        try {
+<b class="nc"><i class="no-highlight">108</i>&nbsp;            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(&quot;confirmOrder.fxml&quot;)));</b>
+<b class="nc"><i class="no-highlight">109</i>&nbsp;            Stage registerStage = (Stage) confirmButton.getScene().getWindow();</b>
+<b class="nc"><i class="no-highlight">110</i>&nbsp;            registerStage.setTitle(&quot;Confirm order Page&quot;);</b>
+<b class="nc"><i class="no-highlight">111</i>&nbsp;            registerStage.setScene(new Scene(root));</b>
+<b class="nc"><i class="no-highlight">112</i>&nbsp;            registerStage.show();</b>
+<b class="nc"><i class="no-highlight">113</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">114</i>&nbsp;            errorMessage.setText(&quot;error&quot;);</b>
+<b class="nc"><i class="no-highlight">115</i>&nbsp;        }</b>
+<i class="no-highlight">116</i>&nbsp;    }
+<i class="no-highlight">117</i>&nbsp;
+<i class="no-highlight">118</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -178,7 +217,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-22 18:06</div>
+    <div style="float:right;">generated on 2022-05-23 02:56</div>
 </div>
 </body>
 </html>
