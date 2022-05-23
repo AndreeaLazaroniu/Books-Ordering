@@ -67,7 +67,8 @@ public class UserService {
         return false;
     }
 
-    private static String encodePassword(String salt, String password) {
+    //private
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 

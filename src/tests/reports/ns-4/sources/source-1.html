@@ -50,18 +50,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    85.7%
   </span>
   <span class="absValue">
-    (14/14)
+    (12/14)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    54.8%
   </span>
   <span class="absValue">
-    (31/31)
+    (17/31)
   </span>
 </td>
 </tr>
@@ -100,7 +100,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">25</i>&nbsp;
 <b class="fc"><i class="no-highlight">26</i>&nbsp;    public String getTitle() { return title; }</b>
 <i class="no-highlight">27</i>&nbsp;
-<b class="fc"><i class="no-highlight">28</i>&nbsp;    public void setBookTitle(String title) { this.title = title; }</b>
+<b class="nc"><i class="no-highlight">28</i>&nbsp;    public void setBookTitle(String title) { this.title = title; }</b>
 <i class="no-highlight">29</i>&nbsp;
 <b class="fc"><i class="no-highlight">30</i>&nbsp;    public String getAuthor() { return author; }</b>
 <i class="no-highlight">31</i>&nbsp;
@@ -121,25 +121,25 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">46</i>&nbsp;    @Override
 <i class="no-highlight">47</i>&nbsp;    public boolean equals(Object o) {
 <b class="fc"><i class="no-highlight">48</i>&nbsp;        if (this == o) return true;</b>
-<b class="fc"><i class="no-highlight">49</i>&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="nc"><i class="no-highlight">49</i>&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
 <i class="no-highlight">50</i>&nbsp;
-<b class="fc"><i class="no-highlight">51</i>&nbsp;        Book book = (Book) o;</b>
+<b class="nc"><i class="no-highlight">51</i>&nbsp;        Book book = (Book) o;</b>
 <i class="no-highlight">52</i>&nbsp;
-<b class="fc"><i class="no-highlight">53</i>&nbsp;        if (!Objects.equals(title, book.title)) return false;</b>
-<b class="fc"><i class="no-highlight">54</i>&nbsp;        if (!Objects.equals(author, book.author)) return false;</b>
-<b class="fc"><i class="no-highlight">55</i>&nbsp;        if (!Objects.equals(price, book.price)) return false;</b>
-<b class="fc"><i class="no-highlight">56</i>&nbsp;        if (!Objects.equals(pageNumber, book.pageNumber)) return false;</b>
-<b class="fc"><i class="no-highlight">57</i>&nbsp;        return Objects.equals(genre, book.genre);</b>
+<b class="nc"><i class="no-highlight">53</i>&nbsp;        if (!Objects.equals(title, book.title)) return false;</b>
+<b class="nc"><i class="no-highlight">54</i>&nbsp;        if (!Objects.equals(author, book.author)) return false;</b>
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        if (!Objects.equals(price, book.price)) return false;</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        if (!Objects.equals(pageNumber, book.pageNumber)) return false;</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;        return Objects.equals(genre, book.genre);</b>
 <i class="no-highlight">58</i>&nbsp;    }
 <i class="no-highlight">59</i>&nbsp;
 <i class="no-highlight">60</i>&nbsp;    @Override
 <i class="no-highlight">61</i>&nbsp;    public int hashCode() {
-<b class="fc"><i class="no-highlight">62</i>&nbsp;        int result = title != null ? title.hashCode() : 0;</b>
-<b class="fc"><i class="no-highlight">63</i>&nbsp;        result = 31 * result + (author != null ? author.hashCode() : 0);</b>
-<b class="fc"><i class="no-highlight">64</i>&nbsp;        result = 31 * result + (price != null ? price.hashCode() : 0);</b>
-<b class="fc"><i class="no-highlight">65</i>&nbsp;        result = 31 * result + (pageNumber != null ? pageNumber.hashCode() : 0);</b>
-<b class="fc"><i class="no-highlight">66</i>&nbsp;        result = 31 * result + (genre != null ? genre.hashCode() : 0);</b>
-<b class="fc"><i class="no-highlight">67</i>&nbsp;        return result;</b>
+<b class="nc"><i class="no-highlight">62</i>&nbsp;        int result = title != null ? title.hashCode() : 0;</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;        result = 31 * result + (author != null ? author.hashCode() : 0);</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        result = 31 * result + (price != null ? price.hashCode() : 0);</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        result = 31 * result + (pageNumber != null ? pageNumber.hashCode() : 0);</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;        result = 31 * result + (genre != null ? genre.hashCode() : 0);</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;        return result;</b>
 <i class="no-highlight">68</i>&nbsp;    }
 <i class="no-highlight">69</i>&nbsp;
 <i class="no-highlight">70</i>&nbsp;}
@@ -169,7 +169,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-22 18:06</div>
+    <div style="float:right;">generated on 2022-05-23 02:56</div>
 </div>
 </body>
 </html>
